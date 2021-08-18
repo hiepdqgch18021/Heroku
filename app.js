@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 app.get('/',(req,res)=>{
-       res.sendFile(__dirname + '/views/Asm.hbs');
+       res.sendFile(__dirname + '/views/Asm.html');
 })
 
 const PORT = process.env.PORT || 5000;
