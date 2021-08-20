@@ -1,4 +1,4 @@
-*{
+/* *{
        margin: 0;
        padding: 0;
    }
@@ -10,7 +10,7 @@
    }
    html{
        font-family:var(--font-family-main)
-   }
+   } */
    
    /*------------------------------------------------- Header */
    header{ background-color: #eee;}
