@@ -1,8 +1,9 @@
 const express = require('express');
-const ObjectID = require('mongodb').ObjectId;
 const app = express()
+const {ObjectId,MongoClient} = require('mongodb');
 
-const MongoClient = require('mongodb').MongoClient;
+
+//const MongoClient = require('mongodb');
 const url = 'mongodb://localhost:27017';
 
 app.set('view engine', 'hbs')
@@ -36,7 +37,7 @@ app.post('/insert',async(req,res)=>{
   
 app.get('/delete',async (req,res)=>{
        const id  =req.query.id;
-       var ObjectID = require('mongodb').ObjectId;
+       // var ObjectID = require('mongodb').ObjectId;
        const client = await MongoClient.connect(url);
        const dbo = client.db("GCH0805");
        await dbo.collection("students").deleteOne({"_id" : ObjectId(id)});
@@ -47,6 +48,17 @@ app.get('/delete',async (req,res)=>{
        // const id= req.query.id; 
        // await deleteStudent(id);
 })
+
+app.get('/',async (req,res)=>{
+       const client = await MongoClient.connect(url);
+       const dbo = client.db("GCH0805")
+       
+       //const dbo = await getDB(); 
+       const allStudents = await dbo.collection("students").find({}).toArray();
+       res.render('index',{data:allStudents})
+       return dbo;
+})
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>{
