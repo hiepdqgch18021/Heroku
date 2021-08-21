@@ -8,24 +8,35 @@
 </head>
 <body>
   
- <h1>Information</h1>
-
-       <form action="/insert" method="POST">
-       
+ <h1>Information Product</h1>
+<form action="/add" method="POST">     
+      ID  <input type="text" name="txtId"> 
+      <br>
       Name <input type="text" name = "txtName">
-       <br>     
-      Tuoi <input type="text" name="txtTuoi"> 
-      <br> 
-       <input type="submit" value="Insert Student">     
+      <br>     
+      Price <input type="text" name="txtPrice">
+      <br>
+      <input type="submit" value="Add Product">     
        </form> 
-       <ul>
-         {{#each data}}
-         <li>
-           {{name}} - {{tuoi}}
-           <a href="/delete?id={{_id}}">Delete</a>
-         </li>
-         {{/each}}
-       </ul>
+<table border="3">
+  <tr>
+    <th>No</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Delete</th>
+  </tr>
+{{#each data}}
+  <tr>
+    
+    <td>1</td>
+    <td>{{ID}} </td>
+    <td>{{Name}} </td>
+    <td>{{Price}} </td>
+    <td><a href="/delete?id={{_id}}">Delete</a></td>
+    
+  </tr>
+{{/each}}
 
 </body>
 </html>
