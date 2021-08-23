@@ -18,7 +18,8 @@
       <br>
       <input type="submit" value="Add Product">     
        </form> 
-<table border="3">
+       <br>
+<table border="3" class="table">
   <tr>
     <th>No</th>
     <th>ID</th>
@@ -27,8 +28,7 @@
     <th>Delete</th>
   </tr>
 {{#each data}}
-  <tr>
-    
+  <tr> 
     <td>1</td>
     <td>{{ID}} </td>
     <td>{{Name}} </td>
@@ -37,6 +37,8 @@
     
   </tr>
 {{/each}}
+
+<a href="add.hbs">ADD</a>
 
 </body>
 </html>
