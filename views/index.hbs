@@ -4,41 +4,58 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <title>ATN Toy Store</title>
 </head>
 <body>
-  
- <h1>Information Product</h1>
-<form action="/add" method="POST">     
-      ID  <input type="text" name="txtId"> 
-      <br>
+
+
+<header>
+<h1>ATN Product </h1>
+</header>
+<section class="inputForm">
+
+<form action="/search" method="POST" class="search">
+         Search <input type="text" name = "txtSearch">
+         <input type="submit" value="search">
+ </form>
+
+<form action="/add" method="POST" class="add" >   
+
       Name <input type="text" name = "txtName">
       <br>     
       Price <input type="text" name="txtPrice">
       <br>
+      Quantity <input type="txt" name="txtQuantity">
       <input type="submit" value="Add Product">     
-       </form> 
+      </form> 
        <br>
 <table border="3" class="table">
   <tr>
-    <th>No</th>
+    
     <th>ID</th>
     <th>Name</th>
     <th>Price</th>
+    <th>Quantity</th>
     <th>Delete</th>
   </tr>
 {{#each data}}
-  <tr> 
-    <td>1</td>
-    <td>{{ID}} </td>
+  <tr>  
+    <td>{{_id}} </td>
     <td>{{Name}} </td>
     <td>{{Price}} </td>
-    <td><a href="/delete?id={{_id}}">Delete</a></td>
-    
+    <td>{{Quantity}}</td>
+    <td><a href="/delete?id={{_id}}">Delete</a></td>  
   </tr>
 {{/each}}
+</table>
+</section>
+<footer>
+       <h3>© 2021 Copyright by Hiepdqgch18021 - Designed by HiepDuong</h3>
+</footer>
 
-<a href="add.hbs">ADD</a>
+
+
 
 </body>
 </html>
