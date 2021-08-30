@@ -10,6 +10,10 @@ app.post('/add',async(req,res)=>{
        const quantityInput = req.body.txtQuantity;
        const nameInput = req.body.txtName;
        const priceInput = req.body.txtPrice;
+       if(nameInput.length < 5){
+              res.render('index',{errorMsg:"your length less than 5 char"});
+              return;
+       }
        const newProduct = {Name: nameInput, Price : priceInput, Quantity : quantityInput}
        const client = await MongoClient.connect(url);
        const dbo = client.db("AsmDB2");
@@ -28,7 +32,7 @@ app.post('/search',async (req,res)=>{
         const searchInput = req.body.txtSearch;
         const client = await MongoClient.connect(url);
         const dbo = client.db("AsmDB2");
-        const allProducts = await dbo.collection("Asm").find({Name : searchInput}).toArray();
+        const allProducts = await dbo.collection("Asm").find({Name : searchInput}).toArray();      
         res.render('index',{data:allProducts})
 })
 app.get('/',async (req,res)=>{
